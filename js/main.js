@@ -4,7 +4,6 @@
 
 $(function () {
   //TABS
-
   // вкладки с контентом
   var $contentTabs = $('.tab-content .tab-item');
 
@@ -42,7 +41,28 @@ $(function () {
     }, "slow");
 
     //отобразим  нужную вкладку с контентом по номеру кликнутой табы в колекции
-    $contentTabs.eq($(this).index()).fadeIn('slow')
+    $contentTabs.eq($(this).index()).fadeIn('slow');
   });
 
+  //Всплавающие подсказки
+  //прячем все подсказки
+  $('form em').hide();
+
+  // показать подсказку
+  function showHelp(){
+    $(this).next("em").animate({opacity: "show", left: "270"}, "slow");
+  }
+
+  // спрятать подсказку
+  function hideHelp() {
+    $(this).next("em").animate({opacity: "hide", left: "300"}, "slow");
+  }
+
+  // обработчики на события focus и hover
+  $("form input").hover(showHelp, hideHelp).focusin(showHelp).focusout(hideHelp);
+
+  // обработчик на кнопку
+  $('.show-help').click(function () {
+    $('form em').animate({opacity: "show", left: "270"}, "slow");
+  });
 });
