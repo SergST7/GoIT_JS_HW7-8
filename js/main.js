@@ -11,8 +11,12 @@ $(function () {
   //переключатели табов
   var $linkTabs = $('.tabs .tab');
 
+  //линия сверху для активного таба переключателя
+  $linkTabs.append('<div class="line"></div>');
+
   //активным после загрузки делаем первый переключатель
   $linkTabs.eq(0).addClass('active');
+  $(".line:first").css("width", "100%");
 
   // прячем все вкладки с контентом кроме первой
   $contentTabs.not(':first').hide();
@@ -22,11 +26,20 @@ $(function () {
     //удалим у всех табов класс active
     $linkTabs.removeClass('active');
 
+    //убираем линию сверху активной табы
+    $(".line").css("width", "0%");
+
     //спрячем все вкладки с контентом
     $contentTabs.hide();
 
     //добавим класс active табе по корой кликнули
     $(this).addClass('active');
+
+    //отображаем линию на кликнутой табе
+    $(this).find(".line").css("left","50%").animate({
+      "width": "100%",
+      "left": "0%"
+    }, "slow");
 
     //отобразим  нужную вкладку с контентом по номеру кликнутой табы в колекции
     $contentTabs.eq($(this).index()).fadeIn('slow')

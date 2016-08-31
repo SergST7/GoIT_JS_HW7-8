@@ -2,3 +2,32 @@
   margin: 0;
   padding: 0;
 }
+
+.wrapper{
+  padding: 50px 10px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.tabs-wrapper{
+  margin-bottom: 30px;
+  min-height:200px;
+}
+
+.tab{
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #eeeeee;
+  border-radius: 5px 5px 0 0;
+  position: relative;
+  padding:10px 5px;
+  /*line-height: 40px;*/
+}
+
+.line{
+  background-color: blue;
+  height: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
